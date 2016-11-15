@@ -1,0 +1,125 @@
+#include <iostream>
+using namespace std;
+
+/**
+  * This clas deals with alphabets of 
+  * english language.
+  *
+  * Please check another code I published 
+  * on my profile for improved version.
+  *
+  * @author Shrikrishna Meena
+  * @created 15 November 2016  
+  */
+class alphabets {
+   string alphaBets;
+   public: 
+   alphabets(){
+       int i = 0;
+        for(char a='a';a<='z';a++){
+           this->alphaBets[i] = a;
+           i++;
+        }
+        this->alphaBets[i] = ' ';
+      
+   }
+   
+   /**
+     * returns the list of alphabets 
+     * as characters array
+     */
+   string getList(){
+      return this->alphaBets;
+   }
+};
+
+/**
+  * This is baby girl Radha.
+  * Not definitely an AI system.
+  * But knows some words.
+  *
+  * @author Shrikrishna Meena
+  * @created 15 November 2016  
+  */
+class Radha {
+
+    //Neurons
+    string welC, in, out, abc;
+    int spread_sz = 15;
+    int spread[15] = {0,13,3,26,18,15,17,4,0,3,26,11,14,21,4};
+    
+   public :
+   
+    //constructor
+   Radha() {
+       //intialing vars
+        alphabets alphaBets;
+        this->abc = alphaBets.getList();
+        this->welC = "Me: Hi! How are you?";
+        this->out = "Enjoy!";
+   }
+   
+   
+   /*
+    * A method to tell Radh to start talking.
+    */
+   void talk(){
+      //Printing welcome message
+      cout << this->welC << endl;
+      //Requesting user response
+      this->ask();       
+   }
+   
+   private :
+   
+   /*
+    * EAR of the Radha
+    * Metod that deals with user input
+    */
+   void ask(){
+      //Waiting for message
+      cin >> this->in;
+      //Triggering the brain
+      this->brain();
+   }
+   
+   /*
+    * A tiny BRAIN of the Radha
+    */
+   void brain(){
+       //Preparing reply in brain
+      //and speaking to user
+      this->speak("You: " + this->in);
+      this->speak("Me: " + this->out);
+      //Appending a secret word in reply
+      this->tellSecret();
+   }
+   
+   /*
+    * Lips of the Radha
+    * that speaks
+    */
+   void speak(string msg){
+       cout << msg << endl;
+   }
+   
+   /*
+    * Part of brain
+    * Generates a secret message.
+    */
+   void tellSecret(){
+      string secret;
+      for(int i = 0; i < this->spread_sz; i++) {
+          int idx = this->spread[i];
+          secret += this->abc[idx];
+      }
+      
+      this->speak(secret);
+   }
+};
+
+int main() {
+    Radha R;
+    R.talk();
+    return 0;
+}
